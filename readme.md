@@ -1,0 +1,1 @@
+Gatling extension to enable sending messages to Kafka
