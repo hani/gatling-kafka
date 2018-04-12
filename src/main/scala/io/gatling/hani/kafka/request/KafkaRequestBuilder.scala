@@ -14,8 +14,8 @@ case class KafkaRequestSendBuilderTopic(requestName: String, config: GatlingConf
 }
 
 case class KafkaRequestSendBuilderMessage[K, V](requestName: String, topic: String, config: GatlingConfiguration) {
-  def message(key: Option[Expression[K]], payload: Expression[V]) =
-    KafkaSendRequestBuilder(KafkaAttributes[K, V](requestName, topic, key, payload), KafkaRequestSendBuilder.apply(_, config))
+  def message(key: Option[Expression[K]], payload: Expression[V]): KafkaSendRequestBuilder[K, V] =
+    KafkaSendRequestBuilder[K, V](KafkaAttributes[K, V](requestName, topic, key, payload), KafkaRequestSendBuilder.apply(_, config))
 }
 
 case class KafkaSendRequestBuilder[K, V](attributes: KafkaAttributes[K, V], factory: KafkaAttributes[K, V] => ActionBuilder) {

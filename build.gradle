@@ -19,4 +19,5 @@ apply plugin: 'scala'
 dependencies {
   compile "io.gatling.highcharts:gatling-charts-highcharts:2.3.1"
   compile "org.apache.kafka:kafka-clients:1.1.0"
+  compileOnly 'org.scala-lang:scala-library:2.12.5'
 }
