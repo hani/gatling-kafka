@@ -7,6 +7,7 @@ buildscript {
 
 plugins {
   id "com.github.ben-manes.versions" version "0.17.0"
+  id "com.github.lkishalmi.gatling" version "0.7.1"
 }
 
 repositories {
@@ -16,8 +17,14 @@ repositories {
 
 apply plugin: 'scala'
 
+gatling {
+  toolVersion = "2.3.1"
+  jvmArgs = [ '-server', '-Xms512M', '-Xmx512M' ]
+}
+
 dependencies {
   compile "io.gatling.highcharts:gatling-charts-highcharts:2.3.1"
   compile "org.apache.kafka:kafka-clients:1.1.0"
+  gatling "org.apache.kafka:kafka-clients:1.1.0"
   compileOnly 'org.scala-lang:scala-library:2.12.5'
 }
